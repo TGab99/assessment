@@ -4,7 +4,7 @@
   "description": "Create a web-based solution that converts numeric input into the English phrase of that number.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
