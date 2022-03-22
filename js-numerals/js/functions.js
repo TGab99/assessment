@@ -7,6 +7,11 @@ const checkbox_year = document.getElementById("year");
 const number = document.getElementById("input_field").value;
 const text = document.getElementById("text");*/
 
+function convert_millions(num) {
+    if (num >= 1000000) return convert_millions(Math.floor(num / 1000000)) + " million " + convert_thousands(num % 1000000);
+    else return convert_thousands(num);
+}
+
 function convert_thousands(num) {
     if (num >= 1000) 
         //num >= 1000 return convert_hundreds and " thousand " plus convert_hundreds
@@ -37,7 +42,7 @@ function convert_tens(num) {
         return tens[num / 10];
     else 
         //otherwise return an element of tens and an element of ones with "-"
-        return tens[Math.floor(num / 10)] + "-" + ones[num % 10];
+        return tens[Math.floor(num / 10)] + " " + ones[num % 10];
 }
 
 function convert(num) {
@@ -50,4 +55,5 @@ module.exports = {
     convert_tens,
     convert_hundreds,
     convert_thousands,
+    convert_millions,
 };
