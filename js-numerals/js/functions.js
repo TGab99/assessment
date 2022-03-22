@@ -7,6 +7,13 @@ const checkbox_year = document.getElementById("year");
 const number = document.getElementById("input_field").value;
 const text = document.getElementById("text");*/
 
+function convert_hundreds(num) {
+    let value = num.toString();
+    if(num > 99 && value.substr(1, value.length - 1) == "00") return ones[Math.floor(num / 100)] + " hundred";
+    else if(num > 99) return ones[Math.floor(num / 100)] + " hundred and " + convert_tens(num % 100);
+    else return convert_tens(num);
+}
+
 function convert_tens(num) {
     //num < 10 then return an element of ones array
     if (num < 10) return ones[num];
@@ -26,4 +33,5 @@ function convert(num) {
 //exports for the tests too
 module.exports = {
     convert_tens,
+    convert_hundreds,
 };
