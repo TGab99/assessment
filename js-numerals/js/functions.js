@@ -18,20 +18,28 @@ function main() {
 function changeCheckboxes() {
     //Checks number checkbox is checked
     if(document.getElementById("number").checked == true) {
+        //Sets number_lb's color dark blue
+        document.getElementById("number_lb").style.color = "#003f99";
+        //Sets year_lb's color whitesmoke
+        document.getElementById("year_lb").style.color = "whitesmoke";
         //Sets year checkbox's checked false
         document.getElementById("year").checked = false;
         //Sets input_field's value null
         document.getElementById("input_field").value = null;
         //Sets text is empty
         document.getElementById("text").innerHTML = "";
+    } else {
+        //Sets year_lb's color dark blue
+        document.getElementById("year_lb").style.color = "#003f99";
+        //Sets number_lb's color whitesmoke
+        document.getElementById("number_lb").style.color = "whitesmoke";
+        //Sets number checkbox's checked false
+        document.getElementById("number").checked = false;
+        //Sets input_field's value null
+        document.getElementById("input_field").value = null;
+        //Sets text is empty
+        document.getElementById("text").innerHTML = "";
     }
-
-    //Sets number checkbox's checked false
-    document.getElementById("number").checked = false;
-    //Sets input_field's value null
-    document.getElementById("input_field").value = null;
-    //Sets text is empty
-    document.getElementById("text").innerHTML = "";
 }
 
 function convert_milliards(num) {
