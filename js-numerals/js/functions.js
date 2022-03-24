@@ -2,10 +2,37 @@ let ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", 
 let tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 let teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
 
-/*const checkbox_number = document.getElementById("number");
-const checkbox_year = document.getElementById("year");
-const number = document.getElementById("input_field").value;
-const text = document.getElementById("text");*/
+function main() {
+    let num = document.getElementById("input_field").value;
+
+    //Checks number checkbox is checked
+    if(document.getElementById("number").checked == true) {
+        //Sets text with convert function where the year parameter is false
+        document.getElementById("text").innerHTML = convert(num, false);
+    }
+
+    //Sets text with convert function where the year parameter is true
+    document.getElementById("text").innerHTML = convert(num, true);
+}
+
+function changeCheckboxes() {
+    //Checks number checkbox is checked
+    if(document.getElementById("number").checked == true) {
+        //Sets year checkbox's checked false
+        document.getElementById("year").checked = false;
+        //Sets input_field's value null
+        document.getElementById("input_field").value = null;
+        //Sets text is empty
+        document.getElementById("text").innerHTML = "";
+    }
+
+    //Sets number checkbox's checked false
+    document.getElementById("number").checked = false;
+    //Sets input_field's value null
+    document.getElementById("input_field").value = null;
+    //Sets text is empty
+    document.getElementById("text").innerHTML = "";
+}
 
 function convert_milliards(num) {
     //Checks num is greater than 999999999
@@ -29,10 +56,13 @@ function convert_milliards(num) {
 function convert_millions(num) {
     //Checks num is greater than 999999
     if(num > 999999) {
+        //Checks num is greater than 1000000 and num is less than 10000000 and num's five characters are 0
         if (num > 1000000 && num < 10000000 && num.toString().substr(1, 5) == "00000") return convert_thousands(Math.floor(num / 1000000)) + " million and " + convert_thousands(num % 1000000);
         
+        //Checks num is greater than 10000000 and num is less than 100000000 and num's six characters are 0
         if (num > 10000000 && num < 100000000 && num.toString().substr(1, 6) == "000000") return convert_thousands(Math.floor(num / 1000000)) + " million and " + convert_thousands(num % 1000000);
         
+        //Checks num is greater than 100000000 and num is less than 1000000000 and num's seven characters are 0
         if (num > 100000000 && num < 1000000000 && num.toString().substr(1, 7) == "0000000") return convert_thousands(Math.floor(num / 1000000)) + " million and " + convert_thousands(num % 1000000);
 
         return convert_thousands(Math.floor(num / 1000000)) + " million " + convert_thousands(num % 1000000);
@@ -64,12 +94,16 @@ function convert_thousands(num, year = false) {
      //Checks num is greater than 999
      if(num > 999) {
 
+        //Checks num is greater or equals 1000 and num's three characters are a
         if(num >= 1000 && num.toString().substr(1, 4) == "000") return convert_hundreds(Math.floor(num / 1000), true) + " thousand";
 
+        //Checks num is greater than 1000 and num's one charachter is 0
         if(num > 1000 && num.toString().substr(1, 2) == "00") return convert_hundreds(Math.floor(num / 1000), true) + " thousand and " + convert_hundreds(num % 1000, true);
 
+        //Check num is greater than 1000 and num's one charachter is 0
         if(num > 1000 && num.toString().substr(2, 3) == "00") return convert_hundreds(Math.floor(num / 100), true) + " hundred";
 
+        //Check num is greater than 1000 and num's one charachter is 0
         if(num > 1000 && num.toString()[2] == "0") return convert_hundreds(Math.floor(num / 100), true) + " oh " + convert_hundreds(num % 100, true)
         
         return convert_hundreds(Math.floor(num / 100,true)) + " " + convert_hundreds(num % 100,true);
@@ -119,22 +153,25 @@ function convert_tens(num) {
     return tens[Math.floor(num / 10)] + "-" + ones[num % 10];
 }
 
-function convert(num) {
-    // if(checkbox_number.checked == true) {
-    //     if (num == 0) return "zero";
+function convert(num, year) {
+    //Checks year is false
+    if(year == false) {
+        //Checks num is 0
+        if (num == 0) return "zero";
+        
+        return convert_milliards(num);
+    }
 
-    //     return convert_milliards(num);
-    // }
+    //Checks num less than or equals 0 or num greater than 9999
+    if(num <= 0 || num > 9999) return "Add The Year Between 1 and 9999";
 
-    // if(num <= 0 || num > 9999) return "Add The Year Between 1 and 9999";
-
-    // return convert_thousands(num, true);
-    pass
+    return convert_thousands(num, true);
 }
 
 //exports for the tests too
 module.exports = {
-    convert,
+    main,
+    changeCheckboxes,
     convert_tens,
     convert_hundreds,
     convert_thousands,
