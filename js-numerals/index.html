@@ -12,14 +12,14 @@
 
         <div class="container">
             <div class="checkboxes">
-                <input id="number" type="checkbox" value="number" checked/>
+                <input id="number" type="checkbox" value="number" onclick="changeCheckboxes()" checked/>
                 <label for="number">Number</label>
-                <input id="year" type="checkbox" value="year">
+                <input id="year" type="checkbox" value="year" onclick="changeCheckboxes()">
                 <label for="year">Year</label>
             </div>
             <div class="input">
                 <input id="input_field" type="number" placeholder="Enter a number"/>
-                <button id="convert_btn">Convert</button>
+                <button id="convert_btn" onclick="main()">Convert</button>
             </div>
             <p id="text"></p>
         </div>
