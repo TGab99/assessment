@@ -5,39 +5,39 @@ const { test, expect } = require("@jest/globals");
 const {convert_tens, convert_hundreds, convert_thousands, convert_millions, convert_milliards} = require("../js/functions");
 
 describe("convert_tens", () => {
-    it("Pass For a Number (7)", () => {
+    it("Check 7", () => {
         expect(convert_tens(7)).toEqual("seven");
     });
 
-    it("Pass for an number (10)", () => {
+    it("Check 10", () => {
         expect(convert_tens(10)).toEqual("ten");
     });
 
-    it("Pass for an number (11)", () => {
+    it("Check 11", () => {
         expect(convert_tens(11)).toEqual("eleven");
     });
 
-    it("Pass for an number (12)", () => {
+    it("Check 12", () => {
         expect(convert_tens(12)).toEqual("twelve");
     });
 
-    it("Pass for an number (18)", () => {
+    it("Check 18", () => {
         expect(convert_tens(18)).toEqual("eighteen");
     });
 
-    it("Pass for an number (42)", () => {
+    it("Check 42", () => {
         expect(convert_tens(42)).toEqual("forty-two");
     });
 
-    it("Pass for an number (57)", () => {
+    it("Check 57", () => {
         expect(convert_tens(57)).toEqual("fifty-seven");
     });
 
-    it("Pass for an number (70)", () => {
+    it("Check 70", () => {
         expect(convert_tens(70)).toEqual("seventy");
     });
 
-    it("Pass for an number (99)", () => {
+    it("Check 99", () => {
         expect(convert_tens(99)).toEqual("ninety-nine");
     });
 });
@@ -235,39 +235,69 @@ describe("convert_milliards", () => {
 });
 
 describe("convert_tens_to_year", () => {
-    it("Pass For a Number (7)", () => {
+    it("Check 7", () => {
         expect(convert_tens(7)).toEqual("seven");
     });
 
-    it("Pass for an number (10)", () => {
+    it("Check 10", () => {
         expect(convert_tens(10)).toEqual("ten");
     });
 
-    it("Pass for an number (11)", () => {
+    it("Check 11", () => {
         expect(convert_tens(11)).toEqual("eleven");
     });
 
-    it("Pass for an number (12)", () => {
+    it("Check 12", () => {
         expect(convert_tens(12)).toEqual("twelve");
     });
 
-    it("Pass for an number (18)", () => {
+    it("Check 18", () => {
         expect(convert_tens(18)).toEqual("eighteen");
     });
 
-    it("Pass for an number (42)", () => {
+    it("Check 42", () => {
         expect(convert_tens(42)).toEqual("forty-two");
     });
 
-    it("Pass for an number (57)", () => {
+    it("Check 57", () => {
         expect(convert_tens(57)).toEqual("fifty-seven");
     });
 
-    it("Pass for an number (70)", () => {
+    it("Check 70", () => {
         expect(convert_tens(70)).toEqual("seventy");
     });
 
-    it("Pass for an number (99)", () => {
+    it("Check 99", () => {
         expect(convert_tens(99)).toEqual("ninety-nine");
+    });
+});
+
+describe("convert_hundreds_to_year", () => {
+    it("Check 7", () => {
+        expect(convert_hundreds(7, true)).toEqual("seven");
+    });
+
+    it("Check 42", () => {
+        expect(convert_hundreds(42, true)).toEqual("forty-two");
+    });
+
+    it("Check 100", () => {
+        expect(convert_hundreds(100, true)).toEqual("one hundred");
+    });
+
+    it("Check 101", () => {
+        expect(convert_hundreds(101, true)).toEqual("one oh one");
+    });
+
+    it("Check 299", () => {
+        expect(convert_hundreds(299, true)).toEqual("two ninety-nine")
+    });
+
+    it("Check 545", () => {
+        expect(convert_hundreds(545, true)).toEqual("five forty-five")
+    });
+
+    it("Check 999", () => {
+        expect(convert_hundreds(999, true)).toEqual("nine ninety-nine")
     });
 });
