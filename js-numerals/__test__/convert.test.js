@@ -301,3 +301,37 @@ describe("convert_hundreds_to_year", () => {
         expect(convert_hundreds(999, true)).toEqual("nine ninety-nine")
     });
 });
+
+describe("convert_thousands_to_year", () => {
+    it("Check 7", () => {
+        expect(convert_thousands(7, true)).toEqual("seven");
+    });
+
+    it("Check 42", () => {
+        expect(convert_thousands(42, true)).toEqual("forty-two");
+    });
+
+    it("Check 1000", () => {
+        expect(convert_thousands(1000, true)).toEqual("one thousand")
+    });
+
+    it("Check 1999", () => {
+        expect(convert_thousands(1999, true)).toEqual("nineteen ninety-nine")
+    });
+
+    it("Check 2001", () => {
+        expect(convert_thousands(2001, true)).toEqual("two thousand and one")
+    });
+
+    it("Check 2100", () => {
+        expect(convert_thousands(2100, true)).toEqual("twenty-one hundred")
+    });
+
+    it("Check 2101", () => {
+        expect(convert_thousands(2101, true)).toEqual("twenty-one oh one")
+    });
+
+    it("Check 9999", () => {
+        expect(convert_thousands(9999, true)).toEqual("ninety-nine ninety-nine")
+    });
+});
