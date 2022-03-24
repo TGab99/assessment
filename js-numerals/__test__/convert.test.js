@@ -233,3 +233,41 @@ describe("convert_milliards", () => {
         expect(convert_milliards(999999999999)).toEqual("nine hundred and ninety-nine milliard nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine")
     });
 });
+
+describe("convert_tens_to_year", () => {
+    it("Pass For a Number (7)", () => {
+        expect(convert_tens(7)).toEqual("seven");
+    });
+
+    it("Pass for an number (10)", () => {
+        expect(convert_tens(10)).toEqual("ten");
+    });
+
+    it("Pass for an number (11)", () => {
+        expect(convert_tens(11)).toEqual("eleven");
+    });
+
+    it("Pass for an number (12)", () => {
+        expect(convert_tens(12)).toEqual("twelve");
+    });
+
+    it("Pass for an number (18)", () => {
+        expect(convert_tens(18)).toEqual("eighteen");
+    });
+
+    it("Pass for an number (42)", () => {
+        expect(convert_tens(42)).toEqual("forty-two");
+    });
+
+    it("Pass for an number (57)", () => {
+        expect(convert_tens(57)).toEqual("fifty-seven");
+    });
+
+    it("Pass for an number (70)", () => {
+        expect(convert_tens(70)).toEqual("seventy");
+    });
+
+    it("Pass for an number (99)", () => {
+        expect(convert_tens(99)).toEqual("ninety-nine");
+    });
+});
