@@ -41,7 +41,7 @@ function convert_millions(num) {
     return convert_thousands(num);
 }
 
-function convert_thousands(num) {
+function convert_thousands(num, year = false) {
     //Checks num is greater than 999
     if(num > 999) {
 
@@ -60,7 +60,7 @@ function convert_thousands(num) {
     return convert_hundreds(num);
 }
 
-function convert_hundreds(num) {
+function convert_hundreds(num, year = false) {
     //Checks num is greater than 99
     if(num > 99) {
         //Checks num's two last characters are 0
@@ -86,12 +86,21 @@ function convert_tens(num) {
 }
 
 function convert(num) {
-    if (num == 0) return "zero";
-    else return convert_milliards(num);
+    // if(checkbox_number.checked == true) {
+    //     if (num == 0) return "zero";
+
+    //     return convert_milliards(num);
+    // }
+
+    // if(num <= 0 || num > 9999) return "Add The Year Between 1 and 9999";
+
+    // return convert_thousands(num, true);
+    pass
 }
 
 //exports for the tests too
 module.exports = {
+    convert,
     convert_tens,
     convert_hundreds,
     convert_thousands,
