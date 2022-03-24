@@ -12,10 +12,14 @@
 
         <div class="container">
             <div class="checkboxes">
-                <input id="number" type="checkbox" value="number" onclick="changeCheckboxes()" checked/>
-                <label for="number">Number</label>
-                <input id="year" type="checkbox" value="year" onclick="changeCheckboxes()">
-                <label for="year">Year</label>
+                <div class="number_container">
+                    <input id="number" type="checkbox" value="number" checked/>
+                    <label id="number_lb" for="number" onclick="changeCheckboxes()">Number</label>
+                </div>
+                <div class="year_container">
+                    <input id="year" type="checkbox" value="year">
+                    <label id="year_lb" for="year" onclick="changeCheckboxes()">Year</label>
+                </div>
             </div>
             <div class="input">
                 <input id="input_field" type="number" placeholder="Enter a number"/>
