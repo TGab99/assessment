@@ -61,12 +61,28 @@ function convert_thousands(num, year = false) {
 }
 
 function convert_hundreds(num, year = false) {
-    //Checks num is greater than 99
+    //Checks year is false
+    if(year == false) {
+        //Checks num is greater than 99
+        if(num > 99) {
+            //Checks num's two last characters are 0
+            if(num.toString().substr(1, num.toString().length) == "00") return ones[Math.floor(num / 100)] + " hundred";
+
+            return ones[Math.floor(num / 100)] + " hundred and " + convert_tens(num % 100); 
+        }
+
+        return convert_tens(num);
+    }
+
+    //Checks nim is greater than 99
     if(num > 99) {
         //Checks num's two last characters are 0
         if(num.toString().substr(1, num.toString().length) == "00") return ones[Math.floor(num / 100)] + " hundred";
 
-        return ones[Math.floor(num / 100)] + " hundred and " + convert_tens(num % 100); 
+        //Checks num's one character is 0
+        if(num.toString()[1] == "0") return ones[Math.floor(num / 100)] + " oh " + convert_tens(num % 100);
+
+        return ones[Math.floor(num / 100)] + " " + convert_tens(num % 100);
     }
 
     return convert_tens(num);
