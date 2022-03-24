@@ -42,22 +42,40 @@ function convert_millions(num) {
 }
 
 function convert_thousands(num, year = false) {
-    //Checks num is greater than 999
-    if(num > 999) {
+    if(year == false) {
+         //Checks num is greater than 999
+        if(num > 999) {
 
-        //Checks num is greater than 100000 and num's three and four characters are 0
-        if(num > 100000 && num.toString()[3] == "0" && num.toString()[4] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 100000);
+            //Checks num is greater than 100000 and num's three and four characters are 0
+            if(num > 100000 && num.toString()[3] == "0" && num.toString()[4] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 100000);
 
-        //Checks num is greater than 10000 and num is less than 100000 and num's two and three characters are 0
-        if(num > 10000 && num < 100000 && num.toString()[2] == "0" && num.toString()[3] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 10000);
+            //Checks num is greater than 10000 and num is less than 100000 and num's two and three characters are 0
+            if(num > 10000 && num < 100000 && num.toString()[2] == "0" && num.toString()[3] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 10000);
 
-        //Checks num is greater than 1000 and num is less than 10000 and num's one and two characters are 0
-        if(num > 1000 && num < 10000 && num.toString()[1] == "0" && num.toString()[2] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 1000);
+            //Checks num is greater than 1000 and num is less than 10000 and num's one and two characters are 0
+            if(num > 1000 && num < 10000 && num.toString()[1] == "0" && num.toString()[2] == "0") return convert_hundreds(Math.floor(num / 1000)) + " thousand and " + convert_hundreds(num % 1000);
 
-        return convert_hundreds(Math.floor(num / 1000)) + " thousand " + convert_hundreds(num % 1000);
+            return convert_hundreds(Math.floor(num / 1000)) + " thousand " + convert_hundreds(num % 1000);
+        }
+
+        return convert_hundreds(num);
     }
 
-    return convert_hundreds(num);
+     //Checks num is greater than 999
+     if(num > 999) {
+
+        if(num >= 1000 && num.toString().substr(1, 4) == "000") return convert_hundreds(Math.floor(num / 1000), true) + " thousand";
+
+        if(num > 1000 && num.toString().substr(1, 2) == "00") return convert_hundreds(Math.floor(num / 1000), true) + " thousand and " + convert_hundreds(num % 1000, true);
+
+        if(num > 1000 && num.toString().substr(2, 3) == "00") return convert_hundreds(Math.floor(num / 100), true) + " hundred";
+
+        if(num > 1000 && num.toString()[2] == "0") return convert_hundreds(Math.floor(num / 100), true) + " oh " + convert_hundreds(num % 100, true)
+        
+        return convert_hundreds(Math.floor(num / 100,true)) + " " + convert_hundreds(num % 100,true);
+    }
+
+    return convert_hundreds(num, true);
 }
 
 function convert_hundreds(num, year = false) {
